@@ -53,21 +53,22 @@ app.get("/api/authors/:id", async (req, res) => {
 
 app.post("/api/authors", async (req, res) => {
   const connection = await getDBConnection();
-  const { name, birth_date, biography, nationality } = req.body;
+  const { name, birth_date, biography, nationality, image_url } = req.body;
 
-  if(!name || !birth_date || !biography || !nationality) {
+  if(!name || !birth_date || !biography || !nationality || !image_url) {
     res.status(400).json({
         success: false,
-        message: "Bad params. Please provide 'name', 'birth_date', 'biography', 'nationality'"
+        message: "Bad params. Please provide 'name', 'birth_date', 'biography', 'nationality', 'image_url'"
     })
   } else {
   const sqlQuery =
-    "INSERT INTO authors (name, birth_date, biography, nationality) VALUES (?, ?, ?, ?)";
+    "INSERT INTO authors (name, birth_date, biography, nationality) VALUES (?, ?, ?, ?, ?)";
   const [result] = await connection.query(sqlQuery, [
     name,
     birth_date,
     biography,
     nationality,
+    image_url
   ]);
   res.status(201).json({
     success: true,

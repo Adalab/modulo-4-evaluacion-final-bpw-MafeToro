@@ -61,3 +61,9 @@ DELETE FROM books WHERE id= '9';
 
 INSERT INTO books (title, publication_year, genre, description, author_id)
 VALUES ('Y todo será cuento un día', 2011, 'Ensayo', 'Reflexiones sobre la narrativa y la memoria en la literatura contemporánea.', 3);
+
+ALTER TABLE authors ADD COLUMN image_url VARCHAR(255);
+
+UPDATE authors 
+SET image_url = 'https://biblioteca.lapoeteca.com/images/authors/2020/July/5f205ef3286dd/lvarez%20Luis%20Fernando.jpg'
+WHERE id= 1;

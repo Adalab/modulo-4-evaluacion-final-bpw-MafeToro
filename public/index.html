@@ -29,6 +29,7 @@
             <p><strong>Nacionalidad:</strong> ${author.nationality}</p>
             <p><strong>Biografía:</strong> ${author.biography}</p>
             <p><strong>Fecha de nacimiento:</strong> ${author.birth_date}</p>
+          ${author.image_url ? `<img src="${author.image_url}" alt="Foto de ${author.name}" style="max-width: 200px; border-radius: 4px;" />` : ''}
           </div>
         `;
       });
@@ -42,7 +43,7 @@
         booksSection.innerHTML += `
           <div class="book">
             <h4>${book.title}</h4>
-            <p><strong>Año:</strong> ${book.year}</p>
+            <p><strong>Año:</strong> ${book.publication_year}</p>
             <p><strong>Autor ID:</strong> ${book.author_id}</p>
           </div>
         `;
