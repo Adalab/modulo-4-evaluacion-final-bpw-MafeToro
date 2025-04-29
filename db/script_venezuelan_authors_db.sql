@@ -1,5 +1,5 @@
-CREATE DATABASE Venezuelan_authors;
-USE Venezuelan_authors;
+CREATE DATABASE venezuelan_authors;
+USE venezuelan_authors;
 CREATE TABLE authors (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -57,7 +57,7 @@ biography = 'Sus padres fueron don Alfredo Arvelo y doña Mercedes Larriva siend
 nationality = 'venezolana'
 WHERE id = 4;
 
-DELETE FROM books WHERE id= '9';
+DELETE FROM books WHERE id= 9;
 
 INSERT INTO books (title, publication_year, genre, description, author_id)
 VALUES ('Y todo será cuento un día', 2011, 'Ensayo', 'Reflexiones sobre la narrativa y la memoria en la literatura contemporánea.', 3);

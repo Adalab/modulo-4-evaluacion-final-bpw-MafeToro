@@ -29,6 +29,30 @@ http://localhost:5001/api
 
 *******Endpoints disponibles*******
 
+BASE URL: http://localhost:5001/api
+
+🔸 Autores
+GET /authors → Lista todos los autores
+
+GET /authors/:id → Obtiene un autor por ID
+
+POST /authors → Crea un nuevo autor
+
+PUT /authors/:id → Actualiza un autor existente
+
+DELETE /authors/:id → Elimina un autor
+
+🔸 Libros
+GET /books → Lista todos los libros
+
+GET /books/:id → Obtiene un libro por ID
+
+POST /books → Crea un nuevo libro
+
+PUT /books/:id → Actualiza un libro
+
+DELETE /books/:id → Elimina un libro
+
 
 1.  Obtener todos los autores -- > 
 
@@ -100,4 +124,23 @@ Para eliminar un libro, solo debe indicarse el id, y la respuesta esperada es:
   "message": "Removed book"
 }
 
-DATABASE: db --> script_venezuelan_authorsdb
+🖼️ Frontend estático
+Este proyecto incluye una pequeña interfaz web estática ubicada en la carpeta /public, que se sirve automáticamente desde Express.
+Puedes acceder a ella visitando:
+
+arduino
+Copiar
+Editar
+http://localhost:5001
+La web realiza peticiones a los endpoints de /api/authors y /api/books y muestra los datos en pantalla.
+
+🗄️ Script de base de datos
+El repositorio contiene el script SQL para crear y poblar la base de datos.
+Puedes encontrarlo en el archivo:
+
+bash
+Copiar
+Editar
+/scripts/script_venezuelan_authorsdb.sql
+
+Este archivo incluye la creación de tablas, relaciones y datos de ejemplo.
