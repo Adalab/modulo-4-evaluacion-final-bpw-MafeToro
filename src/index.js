@@ -38,6 +38,7 @@ app.get("/api/authors", async (req, res) => {
   });
 });
 
+
 app.get("/api/authors/:id", async (req, res) => {
   const connection = await getDBConnection();
   const { id } = req.params;
@@ -120,7 +121,9 @@ app.delete("/api/books/:id", async (req, res) => {
 
 app.get("/api/books", async (req, res) => {
     const connection = await getDBConnection();
-    const sqlQuery = "SELECT * FROM books";
+    const sqlQuery = `SELECT books.*, authors.name AS author_name
+    FROM books
+    JOIN authors ON books.author_id = authors.id`;
     const [booksResult] = await connection.query(sqlQuery);
     connection.end();
     res.status(200).json({
