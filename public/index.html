@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Autores Venezolanos</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f9f9f9; }
+    h1 { color: #333; }
+    .author, .book { margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <h1>Autores Venezolanos</h1>
+  <section id="authors"></section>
+
+  <h2>Libros</h2>
+  <section id="books"></section>
+
+  <script>
+    async function fetchAuthors() {
+      const res = await fetch('/api/authors');
+      const data = await res.json();
+      const authorsSection = document.getElementById('authors');
+      data.result[0].forEach(author => {
+        authorsSection.innerHTML += `
+          <div class="author">
+            <h3>${author.name}</h3>
+            <p><strong>Nacionalidad:</strong> ${author.nationality}</p>
+            <p><strong>Biografía:</strong> ${author.biography}</p>
+            <p><strong>Fecha de nacimiento:</strong> ${author.birth_date}</p>
+          </div>
+        `;
+      });
+    }
+
+    async function fetchBooks() {
+      const res = await fetch('/api/books');
+      const data = await res.json();
+      const booksSection = document.getElementById('books');
+      data.result.forEach(book => {
+        booksSection.innerHTML += `
+          <div class="book">
+            <h4>${book.title}</h4>
+            <p><strong>Año:</strong> ${book.year}</p>
+            <p><strong>Autor ID:</strong> ${book.author_id}</p>
+          </div>
+        `;
+      });
+    }
+
+    fetchAuthors();
+    fetchBooks();
+  </script>
+</body>
+</html>

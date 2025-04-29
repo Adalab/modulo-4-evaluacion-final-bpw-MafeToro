@@ -6,7 +6,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../public')));
 require("dotenv").config();
 
 const serverPort = process.env.PORT;
@@ -115,3 +116,14 @@ app.delete("/api/books/:id", async (req, res) => {
   });
   }
 });
+
+app.get("/api/books", async (req, res) => {
+    const connection = await getDBConnection();
+    const sqlQuery = "SELECT * FROM books";
+    const [booksResult] = await connection.query(sqlQuery);
+    connection.end();
+    res.status(200).json({
+      status: "success",
+      result: booksResult,
+    });
+  });
