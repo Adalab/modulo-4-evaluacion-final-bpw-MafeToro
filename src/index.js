@@ -99,11 +99,19 @@ app.put("/api/author/:id", async (req, res) => {
 app.delete("/api/books/:id", async (req, res) => {
   connection = await getDBConnection();
   const { id } = req.params;
-  const sqlQuery = "DELETE FROM books WHERE id= ?";
+
+  if (isNaN(id)) {
+     res.status(400).json({
+      success: false,
+      message: "'id' must be a number.",
+    });
+  } else {
+    const sqlQuery = "DELETE FROM books WHERE id= ?";
   const [result] = await connection.query(sqlQuery, [id]);
   connection.end();
   res.status(200).json({
     status: "success",
-    message: "Removed book",
+    message: `Removed book with id ${id}`
   });
+  }
 });
