@@ -42,3 +42,22 @@ VALUES
 ('Por alto/por bajo', 1974, 'Poesía', 'Primer libro de poesía de María Fernanda Palacios, explorando temas de introspección y lenguaje.', 3),
 ('Sabor y saber de la lengua', 1987, 'Ensayo', 'Compendio de ensayos sobre la lengua y la literatura, analizando obras de autores como Octavio Paz y Franz Kafka.', 3),
 ('Y todo será cuento un día', 2011, 'Ensayo', 'Reflexiones sobre la narrativa y la memoria en la literatura contemporánea.', 3);
+
+SELECT * FROM authors;
+
+SELECT * FROM authors WHERE id=2;
+
+INSERT INTO authors (name, birth_date, biography, nationality)
+VALUES ('José Antonio Ramos Sucre', '1890-06-13', 'Fue un poeta, ensayista, educador, autodidacta y diplomático venezolano. Considerado uno de los más destacados escritores e intelectuales de la historia literaria de Venezuela', 'venezuelan');
+
+UPDATE authors
+SET name = 'Enriqueta Arvelo Larriva',
+birth_date = '1886-03-22',
+biography = 'Sus padres fueron don Alfredo Arvelo y doña Mercedes Larriva siendo la tercera de cinco hermanos (Alfredo, Mercedes, Lourdes y Aura). La infancia y adolescencia transcurrieron en el típico ambiente provinciano del aislado pueblecito',
+nationality = 'venezolana'
+WHERE id = 4;
+
+DELETE FROM books WHERE id= '9';
+
+INSERT INTO books (title, publication_year, genre, description, author_id)
+VALUES ('Y todo será cuento un día', 2011, 'Ensayo', 'Reflexiones sobre la narrativa y la memoria en la literatura contemporánea.', 3);
