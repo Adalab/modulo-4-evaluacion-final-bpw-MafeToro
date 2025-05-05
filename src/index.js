@@ -34,7 +34,7 @@ app.get("/api/authors", async (req, res) => {
   connection.end();
   res.status(200).json({
     status: "success",
-    result: [authorsResult],
+    result: authorsResult,
   });
 });
 
@@ -63,7 +63,7 @@ app.post("/api/authors", async (req, res) => {
     })
   } else {
   const sqlQuery =
-    "INSERT INTO authors (name, birth_date, biography, nationality) VALUES (?, ?, ?, ?, ?)";
+    "INSERT INTO authors (name, birth_date, biography, nationality, image_url) VALUES (?, ?, ?, ?, ?)";
   const [result] = await connection.query(sqlQuery, [
     name,
     birth_date,
@@ -79,7 +79,7 @@ app.post("/api/authors", async (req, res) => {
   }
 });
 
-app.put("/api/author/:id", async (req, res) => {
+app.put("/api/authors/:id", async (req, res) => {
   const connection = await getDBConnection();
   const { id } = req.params;
   const { name, birth_date, biography, nationality } = req.body;
@@ -100,7 +100,7 @@ app.put("/api/author/:id", async (req, res) => {
 });
 
 app.delete("/api/books/:id", async (req, res) => {
-  connection = await getDBConnection();
+  const connection = await getDBConnection();
   const { id } = req.params;
 
   if (isNaN(id)) {

@@ -144,3 +144,13 @@ Editar
 /scripts/script_venezuelan_authorsdb.sql
 
 Este archivo incluye la creación de tablas, relaciones y datos de ejemplo.
+
+
+### Development mode
+To run the project in development mode, make sure `nodemon` is installed globally:
+```bash
+npm install -g nodemon
+
+Then you can start the server with:
+
+npm run dev
